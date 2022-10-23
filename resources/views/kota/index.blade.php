@@ -20,18 +20,18 @@
 
                     <div class="card">
                         <div class="card-header">
-                            <a href="{{ url('add-user') }}" class="btn btn-primary">Add</a>
+                            <a href="{{ url('add-kota') }}" class="btn btn-primary">Add</a>
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">Data User</h5>
+                            <h5 class="card-title">Data Kota</h5>
                             <!-- Default Table -->
                             <table class="table">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Email</th>
-                                        <th scope="col">Level</th>
+                                        <th scope="col">Nama Kota</th>
+                                        <th scope="col">Gambar</th>
+                                        <th scope="col">Status Publish</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
@@ -40,12 +40,14 @@
                                     @foreach ($data as $dt)
                                         <tr>
                                             <td scope="row">{{ $loop->index + 1 }}</td>
-                                            <td>{{ $dt->name }}</td>
-                                            <td>{{ $dt->email }}</td>
-                                            <td>{{ $dt->level }}</td>
+                                            <td>{{ $dt->nama_kota }}</td>
                                             <td>
-                                              <a href="{{ url('edit-user') }}/{{ $dt->id }} " class="btn btn-sm btn-success">Edit</a>
-                                              <a onclick="return confirm('Yakin hapus data?')" href="{{ url('delete-user') }}/{{ $dt->id }} " class="btn btn-sm btn-danger">Delete</a>
+                                                <img src="{{ asset('storage/' . $dt->gambar) }}" width="350" srcset="">   
+                                            </td>
+                                            <td>{{ $dt->status == '0' ? 'Tidak' : 'Ya' }}</td>
+                                            <td>
+                                              <a href="{{ url('edit-kota') }}/{{ $dt->id }} " class="btn btn-sm btn-success">Edit</a>
+                                              <a onclick="return confirm('Yakin hapus data?')" href="{{ url('delete-kota') }}/{{ $dt->id }} " class="btn btn-sm btn-danger">Delete</a>
                                             </td>
                                         </tr>
                                     @endforeach

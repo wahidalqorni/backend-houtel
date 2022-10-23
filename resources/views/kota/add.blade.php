@@ -21,36 +21,31 @@
         <div class="card">
           
           <div class="card-body">
-            <h5 class="card-title">Data User</h5>
+            <h5 class="card-title">Data Kota</h5>
 
-            <form method="POST" action="{{ url('store-user') }}">
+            <form method="POST" action="{{ url('store-kota') }}" enctype="multipart/form-data">
                 
                 {{-- laravel memerlukan code akses untuk mengirim data menggunakan method post --}}
                 @csrf 
                 <div class="row mb-3">
-                  <label for="inputText" class="col-sm-2 col-form-label">Name</label>
+                  <label for="inputText" class="col-sm-2 col-form-label">Nama Kota</label>
                   <div class="col-sm-10">
-                    <input type="text" name="name" class="form-control">
+                    <input type="text" name="nama_kota" class="form-control">
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                  <label for="inputEmail" class="col-sm-2 col-form-label">Gambar</label>
                   <div class="col-sm-10">
-                    <input type="email" name="email" class="form-control">
+                    <input type="file" name="gambar" class="form-control">
                   </div>
                 </div>
+               
                 <div class="row mb-3">
-                  <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                  <label class="col-sm-2 col-form-label">Status</label>
                   <div class="col-sm-10">
-                    <input type="password" name="password" class="form-control">
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  <label class="col-sm-2 col-form-label">Level</label>
-                  <div class="col-sm-10">
-                    <select class="form-select" name="level" aria-label="Default select example">
-                      <option value="Admin">Admin</option>
-                      <option value="Kasir">Kasir</option>
+                    <select class="form-select" name="status" aria-label="Default select example">
+                      <option value="1">Publish</option>
+                      <option value="0">Not Publish</option>
                     </select>
                   </div>
                 </div>

@@ -31,3 +31,10 @@ Route::post('/store-user', [App\Http\Controllers\UserController::class, 'store']
 Route::get('/edit-user/{id}', [App\Http\Controllers\UserController::class, 'edit']); 
 Route::post('/update-user', [App\Http\Controllers\UserController::class, 'update']); 
 Route::get('/delete-user/{id}', [App\Http\Controllers\UserController::class, 'destroy']); 
+
+Route::get('/kota', [App\Http\Controllers\KotaController::class, 'index']);
+Route::get('/add-kota', [App\Http\Controllers\KotaController::class, 'add']);
+Route::post('/store-kota', [App\Http\Controllers\KotaController::class, 'store']); 
+Route::get('/edit-kota/{id}', [App\Http\Controllers\KotaController::class, 'edit']); 
+Route::post('/update-kota', [App\Http\Controllers\KotaController::class, 'update']); 
+Route::get('/delete-kota/{id}', [App\Http\Controllers\KotaController::class, 'destroy']); 
