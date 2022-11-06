@@ -22,10 +22,10 @@ class KotaController extends Controller
     // untuk proses simpan data
     public function store(Request $request)
     {
-        // isert data menggunakan teknik eloquent
         // Kota => merupakan nama class dari Model (Kota)
         $pathGambar = $request->file('gambar')->store('kota-images');
-
+        
+        // insert data menggunakan teknik eloquent (NamaModel::namaFunction => create, destroy, update)
         $kota = Kota::create([
             'nama_kota' => request('nama_kota'),
             'status' => request('status'),
@@ -53,12 +53,12 @@ class KotaController extends Controller
     {
         // ambil data berdasarkan yg dikirim oleh form edit
         $kota = Kota::find($request->id);
-
+        // dd($kota);
         // jika gambar baru diupload
         if($request->file('gambar')){
-            // hapus gambar lama
+            // hapus dulu gambar lama
             Storage::delete($kota->gambar);
-            // $pathGambar akan mengupload file
+            // $pathGambar akan mengupload file yg baru
             $pathGambar = $request->file('gambar')->store('kota-images');
 
             // jika tidak upload
@@ -86,6 +86,7 @@ class KotaController extends Controller
     // untuk proses hapus data
     public function destroy($id)
     {
+        // ambil data berdasarkan yg dikirim dari tombol hapus
         $kota = Kota::find($id);
 
         // hapus file gambar data kota berdasarkan id yg dipilih
