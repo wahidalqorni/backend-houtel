@@ -24,7 +24,23 @@ class UserController extends Controller
 
     // untuk proses simpan data
     public function store()
-    {
+    {  
+        // VALIDASI
+        request()->validate([
+            // apa saja yg divalidasi
+            'name' => 'required',
+            'email' => 'required|unique:users|email',
+            'password' => 'required|min:5',
+            'level' => 'required',
+        ], [
+            'name.required' => 'Nama harus diisi!',
+            'email.required' => 'Email harus diisi!',
+            'email.unique' => 'Email telah digunakan!',
+            'password.required' => 'Password harus diisi!',
+            'password.min' => 'Password min. 5 Karakter',
+            'level.required' => 'Level harus diisi!'
+        ] );
+
         // isert data menggunakan teknik eloquent
         // User => merupakan nama class dari Model (User)
         $user = User::create([
@@ -53,6 +69,17 @@ class UserController extends Controller
     // untuk proses update data
     public function update(Request $request)
     {
+
+        // VALIDASI
+        request()->validate([
+            // apa saja yg divalidasi
+            'name' => 'required',
+            'level' => 'required',
+        ], [
+            'name.required' => 'Nama harus diisi!',
+            'level.required' => 'Level harus diisi!'
+        ] );
+
         // ambil data berdasarkan yg dikirim oleh form edit
         $data = User::where('id',$request->id);
 

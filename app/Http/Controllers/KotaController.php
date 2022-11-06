@@ -22,6 +22,18 @@ class KotaController extends Controller
     // untuk proses simpan data
     public function store(Request $request)
     {
+        // VALIDASI
+        request()->validate([
+            // apa saja yg divalidasi
+            'gambar' => 'required|image|file|max:2048',
+            'nama_kota' => 'required',
+            'status' => 'required',
+        ], [
+            'gambar.required' => 'Gambar harus diisi!',
+            'nama_kota.required' => 'Nama Kota harus diisi!',
+            'status.required' => 'Status harus diisi!' 
+        ] );
+
         // Kota => merupakan nama class dari Model (Kota)
         $pathGambar = $request->file('gambar')->store('kota-images');
         

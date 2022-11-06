@@ -25,35 +25,41 @@
                         <div class="card-body">
                             <h5 class="card-title">Data User</h5>
                             <!-- Default Table -->
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Email</th>
-                                        <th scope="col">Level</th>
-                                        <th scope="col">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {{-- variabel $data => dapat dari controller yg di compact --}}
-                                    @foreach ($data as $dt)
+                            <div class="table-responsive">
+                                <table class="table" id="myTable">
+                                    <thead>
                                         <tr>
-                                            <td scope="row">{{ $loop->index + 1 }}</td>
-                                            <td>{{ $dt->name }}</td>
-                                            <td>{{ $dt->email }}</td>
-                                            <td>{{ $dt->level }}</td>
-                                            <td>
-                                              <a href="{{ url('edit-user') }}/{{ $dt->id }} " class="btn btn-sm btn-success">Edit</a>
-                                              <a onclick="return confirm('Yakin hapus data?')" href="{{ url('delete-user') }}/{{ $dt->id }} " class="btn btn-sm btn-danger">Delete</a>
-                                            </td>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Email</th>
+                                            <th scope="col">Level</th>
+                                            <th scope="col">Action</th>
                                         </tr>
-                                    @endforeach
+                                    </thead>
+                                    <tbody>
+                                        {{-- variabel $data => dapat dari controller yg di compact --}}
+                                        @foreach ($data as $dt)
+                                            <tr>
+                                                <td scope="row">{{ $loop->index + 1 }}</td>
+                                                <td>{{ $dt->name }}</td>
+                                                <td>{{ $dt->email }}</td>
+                                                <td>{{ $dt->level }}</td>
+                                                <td>
+                                                    <a href="{{ url('edit-user') }}/{{ $dt->id }} "
+                                                        class="btn btn-sm btn-success">Edit</a>
+                                                    <a onclick="return confirm('Yakin hapus data?')"
+                                                        href="{{ url('delete-user') }}/{{ $dt->id }} "
+                                                        class="btn btn-sm btn-danger">Delete</a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                                <!-- End Default Table Example -->
+                            </div>
 
 
-                                </tbody>
-                            </table>
-                            <!-- End Default Table Example -->
+
                         </div>
                     </div>
 

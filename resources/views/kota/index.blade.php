@@ -25,37 +25,40 @@
                         <div class="card-body">
                             <h5 class="card-title">Data Kota</h5>
                             <!-- Default Table -->
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Nama Kota</th>
-                                        <th scope="col">Gambar</th>
-                                        <th scope="col">Status Publish</th>
-                                        <th scope="col">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {{-- variabel $data => dapat dari controller yg di compact --}}
-                                    @foreach ($data as $dt)
+                            <div class="table-responsive">
+                                <table class="table" id="myTable">
+                                    <thead>
                                         <tr>
-                                            <td scope="row">{{ $loop->index + 1 }}</td>
-                                            <td>{{ $dt->nama_kota }}</td>
-                                            <td>
-                                                <img src="{{ asset('storage/' . $dt->gambar) }}" width="350" srcset="">   
-                                            </td>
-                                            <td>{{ $dt->status == '0' ? 'Tidak' : 'Ya' }}</td>
-                                            <td>
-                                              <a href="{{ url('edit-kota') }}/{{ $dt->id }} " class="btn btn-sm btn-success">Edit</a>
-                                              <a onclick="return confirm('Yakin hapus data?')" href="{{ url('delete-kota') }}/{{ $dt->id }} " class="btn btn-sm btn-danger">Delete</a>
-                                            </td>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Nama Kota</th>
+                                            <th scope="col">Gambar</th>
+                                            <th scope="col">Status Publish</th>
+                                            <th scope="col">Action</th>
                                         </tr>
-                                    @endforeach
-
-
-                                </tbody>
-                            </table>
-                            <!-- End Default Table Example -->
+                                    </thead>
+                                    <tbody>
+                                        {{-- variabel $data => dapat dari controller yg di compact --}}
+                                        @foreach ($data as $dt)
+                                            <tr>
+                                                <td scope="row">{{ $loop->index + 1 }}</td>
+                                                <td>{{ $dt->nama_kota }}</td>
+                                                <td>
+                                                    <img src="{{ asset('storage/' . $dt->gambar) }}" width="350" srcset="">   
+                                                </td>
+                                                <td>{{ $dt->status == '0' ? 'Tidak' : 'Ya' }}</td>
+                                                <td>
+                                                  <a href="{{ url('edit-kota') }}/{{ $dt->id }} " class="btn btn-sm btn-success">Edit</a>
+                                                  <a onclick="return confirm('Yakin hapus data?')" href="{{ url('delete-kota') }}/{{ $dt->id }} " class="btn btn-sm btn-danger">Delete</a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+    
+    
+                                    </tbody>
+                                </table>
+                                <!-- End Default Table Example -->
+                            </div>
+                            
                         </div>
                     </div>
 
