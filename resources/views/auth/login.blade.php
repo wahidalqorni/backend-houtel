@@ -60,20 +60,29 @@
                             <div class="card mb-3">
 
                                 <div class="card-body">
+                                    {{-- cek jika ada session yg namanya error (yg dikirimkan menggunakan with pada AuthController fungsi loginProses) --}}
+                                    @if (Session::get('error')) {{-- mengambil session --}}
+                                        {{-- menampilkan notif class alert-warning bawaan bootstrap --}}
+                                        <div class="mt-4 alert alert-warning alert-dismissible fade show"
+                                            role="alert">
+                                            <strong>Kesalahan! </strong>{{ Session::get('error') }} {{-- cetak pesan yg diterima dari AuthController fungsi loginProses yg dikirimkan menggunakan keyword with yg telah dibuat --}}
+                                        </div>
+                                    @endif
 
                                     <div class="pt-4 pb-2">
                                         <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
                                         <p class="text-center small">Enter your username & password to login</p>
                                     </div>
 
-                                    <form class="row g-3 needs-validation" action="{{ url('dashboard') }}" novalidate>
-
+                                    <form class="row g-3 needs-validation" method="POST"
+                                        action="{{ url('loginProses') }}" novalidate>
+                                        @csrf
                                         <div class="col-12">
-                                            <label for="yourUsername" class="form-label">Username</label>
+                                            <label for="yourEmail" class="form-label">Email</label>
                                             <div class="input-group has-validation">
                                                 <span class="input-group-text" id="inputGroupPrepend">@</span>
-                                                <input type="text" name="username" class="form-control"
-                                                    id="yourUsername" required>
+                                                <input type="text" name="email" class="form-control" id="yourEmail"
+                                                    required>
                                                 <div class="invalid-feedback">Please enter your username.</div>
                                             </div>
                                         </div>

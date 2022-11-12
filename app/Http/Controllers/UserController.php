@@ -28,18 +28,24 @@ class UserController extends Controller
         // VALIDASI
         request()->validate([
             // apa saja yg divalidasi
+            // name inputan => 'aturan validasi'
             'name' => 'required',
             'email' => 'required|unique:users|email',
             'password' => 'required|min:5',
             'level' => 'required',
-        ], [
+        ], 
+
+        // custom message error validation
+        [
             'name.required' => 'Nama harus diisi!',
             'email.required' => 'Email harus diisi!',
             'email.unique' => 'Email telah digunakan!',
+            'email.email' => 'Format email tidak sesuai',
             'password.required' => 'Password harus diisi!',
             'password.min' => 'Password min. 5 Karakter',
             'level.required' => 'Level harus diisi!'
-        ] );
+        ] 
+    );
 
         // isert data menggunakan teknik eloquent
         // User => merupakan nama class dari Model (User)

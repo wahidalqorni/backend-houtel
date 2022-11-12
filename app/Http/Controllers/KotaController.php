@@ -34,9 +34,9 @@ class KotaController extends Controller
             'status.required' => 'Status harus diisi!' 
         ] );
 
-        // Kota => merupakan nama class dari Model (Kota)
         $pathGambar = $request->file('gambar')->store('kota-images');
         
+        // Kota => merupakan nama class dari Model (Kota)
         // insert data menggunakan teknik eloquent (NamaModel::namaFunction => create, destroy, update)
         $kota = Kota::create([
             'nama_kota' => request('nama_kota'),

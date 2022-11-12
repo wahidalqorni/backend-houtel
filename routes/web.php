@@ -23,6 +23,9 @@ Route::get('/', function () {
 
 // kiri => routing,  tengah =>file controller disambung dgn :: class,  kanan =>'functionnya'
 Route::get('/login', [App\Http\Controllers\AuthController::class, 'login']);
+Route::post('/loginProses', [App\Http\Controllers\AuthController::class, 'loginProses']);
+Route::get('/logout', [App\Http\Controllers\AuthController::class, 'logout']);
+
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index']);
 
 // USER
