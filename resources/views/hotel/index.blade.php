@@ -33,6 +33,8 @@
                                             <th scope="col">Nama Hotel</th>
                                             <th scope="col">Gambar</th>
                                             <th scope="col">Alamat</th>
+                                            <th scope="col">Harga</th>
+                                            <th scope="col">Rating</th>
                                             <th scope="col">Kota</th>
                                             <th scope="col">Status Publish</th>
                                             <th scope="col">Action</th>
@@ -48,6 +50,8 @@
                                                     <img src="{{ asset('storage/' . $dt->gambar) }}" width="350" srcset="">   
                                                 </td>
                                                 <td>{{ $dt->alamat }}</td>
+                                                <td>Rp. {{ number_format($dt->harga) }}</td>
+                                                <td>{{ $dt->rating }}</td>
                                                 <td>{{ $dt->nama_kota }}</td>
                                                 <td>{{ $dt->publish }}</td>
                                                 <td>

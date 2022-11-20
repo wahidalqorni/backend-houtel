@@ -39,6 +39,8 @@ class HotelController extends Controller
         $hotel = Hotel::create([
             'nama_hotel' => request('nama_hotel'),
             'alamat' => request('alamat'),
+            'harga' => request('harga'),
+            'rating' => request('rating'),
             'gambar' => $pathGambar,
             'kota_id' => request('kota_id'),
             'publish' => request('publish')
@@ -89,6 +91,8 @@ class HotelController extends Controller
         $update = $data->update([
             'nama_hotel' => $request->nama_hotel,
             'alamat' => $request->alamat,
+            'harga' => $request->harga,
+            'rating' => $request->rating,
             'gambar' => $pathGambar,
             'kota_id' => $request->kota_id,
             'publish' => $request->publish

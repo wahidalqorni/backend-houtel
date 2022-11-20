@@ -54,6 +54,20 @@
                 </div>
 
                 <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Harga / Malam</label>
+                  <div class="col-sm-10">
+                    <input type="number" name="harga" class="form-control" value="{{ $data->harga }}" required>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Rating</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="rating" class="form-control" value="{{ $data->rating }}" required>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
                   <label for="inputEmail" class="col-sm-2 col-form-label">Gambar</label>
                   <div class="col-sm-10">
                     <input type="file" name="gambar" class="form-control">
