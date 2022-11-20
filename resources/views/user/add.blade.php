@@ -23,7 +23,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Data User</h5>
 
-                            <form method="POST" action="{{ url('store-user') }}">
+                            <form method="POST" action="{{ url('store-user') }}" enctype="multipart/form-data">
 
                                 {{-- laravel memerlukan code akses untuk mengirim data menggunakan method post --}}
                                 @csrf
