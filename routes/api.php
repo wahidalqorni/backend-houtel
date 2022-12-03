@@ -23,3 +23,4 @@ Route::get('/list-kota', [App\Http\Controllers\Api\ApiKotaController::class, 'li
 
 // ENDPOINT HOTEL
 Route::get('/list-hotel', [App\Http\Controllers\Api\ApiHotelController::class, 'listHotel']);
+Route::get('/detail-hotel', [App\Http\Controllers\Api\ApiHotelController::class, 'detailHotel']);
