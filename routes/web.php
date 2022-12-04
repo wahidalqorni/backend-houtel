@@ -56,4 +56,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/edit-hotel/{id}', [App\Http\Controllers\HotelController::class, 'edit']);
     Route::post('/update-hotel', [App\Http\Controllers\HotelController::class, 'update']);
     Route::get('/delete-hotel/{id}', [App\Http\Controllers\HotelController::class, 'destroy']);
+
+    // PEMESANAN
+    Route::get('/pemesanan', [App\Http\Controllers\PemesananController::class, 'index']);
 });

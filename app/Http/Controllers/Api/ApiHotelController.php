@@ -33,6 +33,34 @@ class ApiHotelController extends Controller
         }
     }
 
+    public function searchHotel(Request $request)
+    {
+        $keyword = $request->keyword;
+
+        try {
+            $hotel = DB::table('hotels')
+                ->select(DB::raw('hotels.*, kotas.nama_kota ')) // select field apa saja yg dibutuhkan
+                ->join('kotas', 'kotas.id', 'hotels.kota_id')
+                ->where('hotels.publish','Ya') // meyelekasi bedasarkan publish yg nilainya 'Ya'
+                ->where('hotels.nama_hotel','like','%' . $keyword . '%') // menyeleksi bedasarkan nama_hotel yg diinput
+                ->orWhere('kotas.nama_kota','like','%' . $keyword . '%') // atau menyeleksi bedasarkan nama_kota yg diinput
+                ->get();
+
+            // outputnya berupa data bertipe JSON (format standar API zaman sekarang)
+            return response()->json([
+                'success' => true,
+                'message' => "Success",
+                'hotel'    => $hotel
+            ], 200);
+        } catch (Exception $error) {
+            return response()->json([
+                'success' => false,
+                'message' => "Fail : " . $error->getMessage(),
+                'hotel'    => null
+            ], 500);
+        }
+    }
+
     // menampilkan hotel berdasarkan id yg dipilih
     public function detailHotel(Request $request)
     {

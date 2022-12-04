@@ -36,6 +36,13 @@
         </ul>
       </li><!-- End Components Nav -->
 
+      <li class="nav-item">
+        <a class="nav-link " href="{{ url('pemesanan') }}">
+          <i class="bi bi-grid"></i>
+          <span>Data Pemesanan</span>
+        </a>
+      </li>
+
     </ul>
 
   </aside><!-- End Sidebar-->
