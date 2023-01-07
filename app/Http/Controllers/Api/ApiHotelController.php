@@ -9,14 +9,57 @@ use Illuminate\Support\Facades\DB;
 
 class ApiHotelController extends Controller
 {
-    // menampilkan list hotel
-    public function listHotel()
+    // menampilkan 3 rekomendasi hotel
+    public function listRekomendasiHotel()
     {
         try {
             $hotel = DB::table('hotels')
                 ->select(DB::raw('hotels.*, kotas.nama_kota ')) // select field apa saja yg dibutuhkan
                 ->join('kotas', 'kotas.id', 'hotels.kota_id')
+                ->where('hotels.publish', 'Ya')
+                ->limit(3)
                 ->get();
+
+            // outputnya berupa data bertipe JSON (format standar API zaman sekarang)
+            return response()->json([
+                'success' => true,
+                'message' => "Success",
+                'hotel'    => $hotel
+            ], 200);
+        } catch (Exception $error) {
+            return response()->json([
+                'success' => false,
+                'message' => "Fail : " . $error->getMessage(),
+                'hotel'    => null
+            ], 500);
+        }
+    }
+
+    // menampilkan list hotel
+    public function listHotel()
+    {
+        try {
+
+            $data = [];
+
+            $hotel = DB::table('hotels')
+                ->select(DB::raw('hotels.*, kotas.nama_kota ')) // select field apa saja yg dibutuhkan
+                ->join('kotas', 'kotas.id', 'hotels.kota_id')
+                ->where('hotels.publish', 'Ya')
+                ->get();
+
+            foreach($hotel as $htl) {
+                $data[] = [
+                    'id' => $htl->id,
+                    'nama_hotel' => $htl->nama_hotel,
+                    'alamat' => $htl->alamat,
+                    'gambar' => asset('storage/' . $htl->gambar),
+                    'harga' => $htl->harga,
+                    'rating' => $htl->rating,
+                    'nama_kota' => $htl->nama_kota,
+                    'publish' => $htl->publish,
+                ];
+            }
 
             // outputnya berupa data bertipe JSON (format standar API zaman sekarang)
             return response()->json([

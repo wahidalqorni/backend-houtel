@@ -22,6 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/list-kota', [App\Http\Controllers\Api\ApiKotaController::class, 'listKota']);
 
 // ENDPOINT HOTEL
+Route::get('/rekomendasi-hotel', [App\Http\Controllers\Api\ApiHotelController::class, 'listRekomendasiHotel']);
 Route::get('/list-hotel', [App\Http\Controllers\Api\ApiHotelController::class, 'listHotel']);
 Route::get('/search-hotel', [App\Http\Controllers\Api\ApiHotelController::class, 'searchHotel']);
 Route::get('/detail-hotel', [App\Http\Controllers\Api\ApiHotelController::class, 'detailHotel']);
