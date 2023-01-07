@@ -105,10 +105,10 @@ class ApiHotelController extends Controller
     }
 
     // menampilkan hotel berdasarkan id yg dipilih
-    public function detailHotel(Request $request)
+    public function detailHotel($id, Request $request)
     {
         // wadah untuk menampung nilai inputan yg bernama id
-        $id = $request->id;
+        // $id = $request->id;
 
         try {
             $hotel = DB::table('hotels')
